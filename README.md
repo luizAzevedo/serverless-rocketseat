@@ -1,12 +1,64 @@
 # serverless-rocketseat
-
-
-Criação dos arquivos:
+Criar os arquivos:
  - .editorconfig
  - .eslintrc
 
 
-Iniciar o projeto Nodejs
+ - Copiar em .editorconfig
+```
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+charset = utf-8
+indent_style = space
+
+[*.{js,jsx,html,json,yml}]
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false 
+```
+
+ - Copiar em .eslintrc 
+```
+{
+  "extends": ["standard"],
+  "plugins": ["json"],
+  "rules": {
+    "no-unused-expressions": "off",
+    "complexity": ["error", 7],
+    "eqeqeq": "error",
+    "max-statements": ["error", { "max": 15 }],
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always",
+        "functions": "never"
+      }
+    ],
+    "semi": ["error", "always"]
+  },
+  "globals": {
+    "it": true,
+    "describe": true,
+    "expect": true,
+    "sinon": true,
+    "before": true,
+    "beforeEach": true,
+    "after": true,
+    "afterEach": true,
+    "context": true
+  }
+}
+```
+
+### Iniciar o projeto Nodejs
 yarn init -y
 
 No arquivo package.json, colar "dependencies" e "devDependencies"
@@ -50,8 +102,11 @@ colar "husky"
 
 yarn install
 
-###SERVERLESS
+### Salvar no Git
 
+--
+
+### SERVERLESS
 serverless
 Serverless: No project detected. Do you want to create a new one? (Y/n) Y
 Serverless: What do you want to make? (Use arrow keys)
@@ -82,5 +137,16 @@ Apagar a pasta serverless-rocketseat
 Apagar os comentários
 Alteração do handler: src/handler.hello
 
+### Configurar serverless credentials
+serverless config credentials -o --provider aws --key <key> --secret <secret>
+
+-o = override, apagar configurações anteriores.
+
+➜  serverless config credentials -o --provider aws --key $$$$$$ --secret $$$$$
+
+Serverless: Running "serverless" installed locally (in service node_modules)
+Serverless: Setting up AWS...
+
+serverless deploy
 
 
