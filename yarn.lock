@@ -5081,7 +5081,7 @@ semver@^7.3.4:
   dependencies:
     lru-cache "^6.0.0"
 
-serverless@^2.11.1:
+serverless@^2.30.3:
   version "2.30.3"
   resolved "https://registry.yarnpkg.com/serverless/-/serverless-2.30.3.tgz#17cadffb17e3b17d9b645bc3e2e8a38a355bb355"
   integrity sha512-a/81mGvXwzw90iBGKRcXdVw0lKMWzECh/3BpX8BJvgjCSINmUPjA/HSTota2UWTFp7Ne1vuiBEiLT4x8E/6kgQ==
