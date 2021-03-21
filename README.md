@@ -108,7 +108,7 @@ yarn install
 
 ### SERVERLESS
 serverless
-
+```
 Serverless: No project detected. Do you want to create a new one? (Y/n) Y
 
 Serverless: What do you want to make? (Use arrow keys)
@@ -117,54 +117,46 @@ Serverless: What do you want to make? (Use arrow keys)
   Other 
 
 Serverless: What do you want to call this project? serverless-rocketseat
-
 Project successfully created in 'serverless-rocketseat' folder.
-
 You can monitor, troubleshoot, and test your new service with a free Serverless account.
 
 Serverless: Would you like to enable this? (Y/n) N
-
 You can run the “serverless” command again if you change your mind later.
-
 No AWS credentials were found on your computer, you need these to host your application.
 
 
 Serverless: Do you want to set them up now? No
-
 You can setup your AWS account later. More details available here:
-
   http://slss.io/aws-creds-setup
 
 Serverless: Would you like to setup a command line <tab> completion? (Y/n) n
+```
 
 ### Estrutura do projeto
+```
 Criar uma pasta src/repository
-
 Copiar o arquivo handler.js da pasta serverless-rocketseat para src/repository
-
 Copiar o arquivo serverless.yml para a raiz do projeto.
-
 Apagar a pasta serverless-rocketseat
-
+```
 
 ### Arquivo serverless.yml
+```
 Apagar os comentários
-
 Alteração do handler: src/handler.hello
-
+```
 
 ### Configurar serverless credentials
+```
 serverless config credentials -o --provider aws --key <key> --secret <secret>
 
 -o = override, apagar configurações anteriores.
 
 ➜  serverless config credentials -o --provider aws --key $$$$$$ --secret $$$$$
-
-
 Serverless: Running "serverless" installed locally (in service node_modules)
-
 Serverless: Setting up AWS...
 
 serverless deploy
+```
 
 
