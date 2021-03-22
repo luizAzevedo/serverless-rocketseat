@@ -8,12 +8,49 @@ provider:
   lambdaHashingVersion: 20201221
   stage: dev
   region: us-east-1
+  iamRoleStatements:                            ## Permissões do DynamoDB
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - { "Fn::GetAtt": ["ArticlesDynamoDBTable", "Arn" ] }   ## Nome da tabela 
+
 
 functions:
-  hello:
-    handler: src/handler.hello
+  createArticle:                              ## Nome da função
+    handler: src/handler.createArticle        ## Caminho físico
     events:
       - http:
-          path: /
+          path: /article                      ## Caminho lógico
+          method: POST                        ## Verbo Http
+  getArticle:
+    handler: src/handler.getArticle
+    events:
+      - http:
+          path: /article/{id}                 ## Caminho lógico e parametro
           method: GET
-          
+          request:                            ## Quando tem parametro
+            parameters:
+              paths:
+                id: true
+
+resources:
+  Resources:
+    ArticlesDynamoDBTable:                      ## Nome do resource
+      Type: 'AWS::DynamoDB::Table'              ## Tipo: tabela do dynamoDB
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: articleId            ## nome do campo
+            AttributeType: S                    ## tipo do campo: string
+        KeySchema:
+          -
+            AttributeName: articleId            ## nome do campo
+            KeyType: HASH                       ## ao menos um campo PK
+        BillingMode: PAY_PER_REQUEST            ## cobrança: por requisição
+        TableName: articles                     ## nome da tabela
